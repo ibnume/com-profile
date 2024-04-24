@@ -16,6 +16,11 @@
   cursor: pointer;
 }
 
+.light-theme .slick-prev:before,
+.light-theme .slick-next:before {
+  color: var(--primary-color);
+}
+
 .customer__details {
   display: flex;
   align-items: center;

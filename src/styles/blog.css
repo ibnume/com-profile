@@ -61,6 +61,10 @@
   box-shadow: 5px 5px 15px -5px #999;
 }
 
+.light-theme .blog__item h3 {
+  color: black;
+}
+
 .light-theme .blog__item:nth-child(2) {
   border: 1px solid var(--primary-color);
 }
