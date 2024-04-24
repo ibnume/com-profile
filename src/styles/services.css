@@ -51,6 +51,10 @@
   margin-bottom: 30px;
 }
 
+.light-theme .services__item {
+  border: 1px solid var(--primary-color);
+}
+
 @media only screen and (max-width: 992px) {
   .services__top-content h2 {
     font-size: 1.5rem;
@@ -61,14 +65,14 @@
   }
 
   .services__item {
-    width: 31%;
+    width: 47%;
     margin-bottom: 30px;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .services__item {
-    width: 47.7%;
+    width: 47%;
   }
   .service__title {
     font-size: 1.2rem;

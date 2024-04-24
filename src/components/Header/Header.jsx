@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 import "./header.css";
 
@@ -31,6 +32,11 @@ const Header = ({ theme, toggleTheme }) => {
   const headerRef = useRef(null);
 
   const menuRef = useRef(null);
+  const [isActive, setIsActive] = useState(false);
+
+  const handleState = () => {
+    setIsActive(!isActive);
+  };
 
   const headerFunc = () => {
     if (
@@ -49,6 +55,7 @@ const Header = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener("scroll", headerFunc);
   }, []);
 
+  // eslint-disable-next-line no-unused-vars
   const handleClick = (e) => {
     e.preventDefault();
 
@@ -62,7 +69,9 @@ const Header = ({ theme, toggleTheme }) => {
     });
   };
 
-  const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+  const toggleMenu = () => {
+    menuRef.current.classList.toggle("menu__active");
+  };
   return (
     <header className="header" ref={headerRef}>
       <div className="container">
@@ -72,13 +81,25 @@ const Header = ({ theme, toggleTheme }) => {
           </div>
 
           {/* Navigation ==================== */}
-          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-            <ul className="menu">
+          <div
+            className="navigation"
+            style={{
+              opacity: isActive ? 1 : 0,
+              pointerEvents: isActive ? "all" : "none",
+            }}
+            onClick={() => setIsActive(false)}
+          >
+            <ul
+              className="menu"
+              style={{
+                transform: !isActive ? "translateX(100%)" : "translateX(0)",
+              }}
+            >
               {nav__links.map((item, index) => (
                 <li className="menu__item" key={index}>
                   <a
                     href={item.path}
-                    onClick={handleClick}
+                    // onClick={handleClick}
                     className="menu__link"
                   >
                     {item.display}
@@ -88,6 +109,19 @@ const Header = ({ theme, toggleTheme }) => {
             </ul>
           </div>
 
+          <ul className="flex-center">
+            {nav__links.map((l, idx) => {
+              const { display, path } = l;
+
+              return (
+                <li key={idx} className="menu__item">
+                  <a className="menu__item" href={path}>
+                    {display}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
           {/* light mode ==================== */}
           <div className="light__mode">
             <span onClick={toggleTheme}>
@@ -103,7 +137,7 @@ const Header = ({ theme, toggleTheme }) => {
             </span>
           </div>
 
-          <span className="mobile__menu" onClick={toggleMenu}>
+          <span className="mobile__menu" onClick={handleState}>
             <i className="ri-menu-line"></i>
           </span>
         </div>
