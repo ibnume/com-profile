@@ -34,7 +34,7 @@ const Blog = () => {
         <div className="blog__top-content">
           <h6 className="subtitle">Our blog</h6>
           <h2>
-            Let's have a look from our
+            Let&apos;s have a look from our
             <span className="highlight"> recent blog</span>
           </h2>
         </div>

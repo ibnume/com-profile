@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./footer.css";
+import logo1 from "../../images/logo.png";
 
 const quickLinks01 = [
   {
@@ -54,13 +55,13 @@ const Footer = () => {
       <div className="container">
         <div className="footer__wrapper">
           <div className="footer__logo">
-            <h2>Si Doel Agency</h2>
+            <img src={logo1} alt="" />
             <p className="description">Grow with us</p>
 
             <p className="small__text description">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. At earum
               praesentium voluptate delectus iste optio eveniet veritatis
-              corporis labore temporibus?
+              corporis
             </p>
           </div>
 

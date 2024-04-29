@@ -1,36 +1,36 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/team.css";
 
-import team01 from "../../images/team-01.png";
-import team02 from "../../images/team-02.png";
-import team03 from "../../images/team-03.png";
-import team04 from "../../images/team-04.png";
-
-const teamMembers = [
-  {
-    imgUrl: team01,
-    name: "Si Doel",
-    position: "Product Developer",
-  },
-  {
-    imgUrl: team02,
-    name: "Atun",
-    position: "Front-End Developer",
-  },
-  {
-    imgUrl: team03,
-    name: "Mandra",
-    position: "Product Designer",
-  },
-  {
-    imgUrl: team04,
-    name: "Zaenab",
-    position: "CEO & Sr Developer",
-  },
-];
-
 const Team = () => {
+  const [teamData, setTeamData] = useState([]);
+
+  useState(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://randomuser.me/api/?results=4");
+        const data = await response.json();
+        const results = data.results;
+        const teamMembers = results.map((member, index) => ({
+          imgUrl: member.picture.large,
+          name: member.name.first + " " + member.name.last,
+          position:
+            index === 0
+              ? "Product Developer"
+              : index === 1
+              ? "Front-End Developer"
+              : index === 2
+              ? "Product Designer"
+              : "CEO & Sr Developer",
+        }));
+        setTeamData(teamMembers);
+      } catch (error) {
+        console.error("Terjadi kesalahan:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // empty dependency array to ensure effect runs only once
+
   return (
     <section className="our__team">
       <div className="container">
@@ -42,14 +42,14 @@ const Team = () => {
         </div>
 
         <div className="team__wrapper">
-          {teamMembers.map((item, index) => (
+          {teamData.map((member, index) => (
             <div className="team__item" key={index}>
               <div className="team__img">
-                <img src={item.imgUrl} alt="" />
+                <img src={member.imgUrl} alt={member.name} />
               </div>
               <div className="team__details">
-                <h4>{item.name}</h4>
-                <p className="description">{item.position}</p>
+                <h4>{member.name}</h4>
+                <p className="description">{member.position}</p>
 
                 <div className="team__member-social">
                   <span>

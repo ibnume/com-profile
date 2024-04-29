@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useRef, useEffect, useState } from "react";
+import logo1 from "../../images/logo.png";
 
 import "./header.css";
 
@@ -77,7 +78,7 @@ const Header = ({ theme, toggleTheme }) => {
       <div className="container">
         <div className="nav__wrapper">
           <div className="logo">
-            <h2>Si Doel Agency</h2>
+            <img src={logo1} alt="" />
           </div>
 
           {/* Navigation ==================== */}
