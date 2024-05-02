@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "./footer.css";
-import logo1 from "../../images/logo.png";
+import logo1 from "../../images/logo1.png";
 
 const quickLinks01 = [
   {

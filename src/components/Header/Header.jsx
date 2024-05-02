@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
 import React, { useRef, useEffect, useState } from "react";
-import logo1 from "../../images/logo.png";
+import logo1 from "../../images/logo1.png";
 
 import "./header.css";
 
